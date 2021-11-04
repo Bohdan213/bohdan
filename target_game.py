@@ -21,7 +21,7 @@ def generate_grid() -> List[List[str]]:
             let_list.append(ch)
         word_list.append((temp_ls))
     print(word_list)
-    return word_list
+    return let_list
 
 def get_words(f: str, letters: List[str]) -> List[str]:
     """
@@ -30,7 +30,7 @@ def get_words(f: str, letters: List[str]) -> List[str]:
     list_words = []
     let = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
     for i in range(len(letters)):
-            let[ord(letters[i]) - 97] += 1
+        let[ord(letters[i]) - 97] += 1
     with open(f, 'r') as file:
         for line in file:
             line = line.strip()
@@ -96,19 +96,22 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                         flag = False
             if flag == True and letters[4] in st_word:
                 unnown_list.append(st_word)
-        print(unnown_list)
+        for i in range(len(unnown_list)):
+            print(unnown_list[i], end = ' ')
 
 
 def results():
     """
     Results the game
     """
-    url = "en.txt"
+    url = "C:\Програмирование\pycharm\en.txt"
     letters_list = generate_grid()
     list_words = get_words(url, letters_list)
     user_words = get_user_words()
     print(list_words)
-    print(user_words)
+    for i in range(len(user_words)):
+        print(user_words[i], end = ' ')
+    print()
     get_pure_user_words(user_words, letters_list, list_words)
 
 
