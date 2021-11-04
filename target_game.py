@@ -70,13 +70,12 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     that are not in dictionary.
     """
     unnown_list = []
-    nown_list = []
+    ls = []
     count = 0
     for i in range(len(user_words)):
         st_word = user_words[i]
         if st_word in words_from_dict:
-            count += 1
-            nown_list.append(st_word)
+            continue
         else:
             let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
             lenth = len(user_words[i])
@@ -95,25 +94,9 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
             if flag == True and letters[4] in st_word:
                 unnown_list.append(st_word)
         for i in range(len(unnown_list)):
-            print(unnown_list[i], end = ' ')
-    with open('result.txt', 'w') as file:
-        file.write(str(count))
-        file.write('\n')
-    with open('result.txt', 'a') as file:
-        for i in words_from_dict:
-            file.write(i)
-            file.write(' ')
-        file.write(('\n'))
-    with open('result.txt', 'a') as file:
-        for i in words_from_dict:
-            if i not in nown_list:
-                file.write(i)
-                file.write(' ')
-        file.write('\n')
-    with open('result.txt', 'a') as file:
-        for i in unnown_list:
-            file.write(i)
-            file.write(' ')
+            ls.append(unnown_list[i])
+    return ls
+
 
 
 def results():
@@ -124,11 +107,43 @@ def results():
     letters_list = generate_grid()
     list_words = get_words(url, letters_list)
     user_words = get_user_words()
-    print(list_words)
+    count1 = 0
+    nown_list = []
     for i in range(len(user_words)):
-        print(user_words[i], end = ' ')
+        st_word = user_words[i]
+        if st_word in list_words:
+            count1 += 1
+            nown_list.append(st_word)
+    unnown_list = get_pure_user_words(user_words, letters_list, list_words)
+
+    with open('result.txt', 'w') as file:
+        file.write(str(count1))
+        file.write('\n')
+    print(count1)
+    with open('result.txt', 'a') as file:
+        for i in list_words:
+            file.write(i)
+            file.write(' ')
+        file.write(('\n'))
+    for i in list_words:
+        print(i, end = ' ')
     print()
-    get_pure_user_words(user_words, letters_list, list_words)
+    with open('result.txt', 'a') as file:
+        for i in list_words:
+            if i not in nown_list:
+                file.write(i)
+                file.write(' ')
+        file.write('\n')
+    for i in list_words:
+        if i not in nown_list:
+            print(i, end = ' ')
+    print()
+    with open('result.txt', 'a') as file:
+        for i in unnown_list:
+            file.write(i)
+            file.write(' ')
+    for i in unnown_list:
+        print(i, end = ' ')
 
 
 if __name__ == '__main__':
