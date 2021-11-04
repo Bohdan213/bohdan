@@ -75,11 +75,11 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     """
     unnown_list = []
     for i in range(len(user_words)):
-        redact_word = user_words[i].lower()
+        redact_word = user_words[i].lower
         st_word = user_words[i]
         if redact_word in words_from_dict:
             if redact_word != user_words[i]:
-                unnown_list.append(user_words[i].lower())
+                unnown_list.append(user_words[i].lower)
         else:
             let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
             lenth = len(user_words[i])
@@ -95,8 +95,8 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                         continue
                     else:
                         flag = False
-            if flag == True and letters[4] in st_word.lower():
-                unnown_list.append(st_word.lower())
+            if flag == True and letters[4] in st_word.lower:
+                unnown_list.append(st_word.lower)
         print(unnown_list)
 
 
