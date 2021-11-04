@@ -11,16 +11,12 @@ def generate_grid() -> List[List[str]]:
     Generates list of lists of letters - i.e. grid for the game.
     e.g. [['I', 'G', 'E'], ['P', 'I', 'S'], ['W', 'M', 'G']]
     """
-    word_list = []
     let_list = []
     for _ in range(3):
-        temp_ls = []
         for _ in range(3):
             ch = chr(random.randint(97, 122))
-            temp_ls.append(ch)
             let_list.append(ch)
-        word_list.append((temp_ls))
-    print(word_list)
+    print(let_list)
     return let_list
 
 def get_words(f: str, letters: List[str]) -> List[str]:
@@ -74,11 +70,13 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     that are not in dictionary.
     """
     unnown_list = []
+    nown_list = []
+    count = 0
     for i in range(len(user_words)):
         st_word = user_words[i]
         if st_word in words_from_dict:
-            if st_word != user_words[i]:
-                unnown_list.append(user_words[i])
+            count += 1
+            nown_list.append(st_word)
         else:
             let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
             lenth = len(user_words[i])
@@ -98,13 +96,31 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                 unnown_list.append(st_word)
         for i in range(len(unnown_list)):
             print(unnown_list[i], end = ' ')
+    with open('result.txt', 'w') as file:
+        file.write(str(count))
+        file.write('\n')
+    with open('result.txt', 'a') as file:
+        for i in words_from_dict:
+            file.write(i)
+            file.write(' ')
+        file.write(('\n'))
+    with open('result.txt', 'a') as file:
+        for i in words_from_dict:
+            if i not in nown_list:
+                file.write(i)
+                file.write(' ')
+        file.write('\n')
+    with open('result.txt', 'a') as file:
+        for i in unnown_list:
+            file.write(i)
+            file.write(' ')
 
 
 def results():
     """
     Results the game
     """
-    url = "en.txt"
+    url = "C:\Програмирование\pycharm\en.txt"
     letters_list = generate_grid()
     list_words = get_words(url, letters_list)
     user_words = get_user_words()
