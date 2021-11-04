@@ -30,7 +30,7 @@ def get_words(f, letters):
                     if 'adj' in i:
                         list_of_tuples.append((ls_st[0], 'adjective'))
                         break
-                    if 'adv' in i:
+                    if 'adv' in i and not 'advp' in i:
                         list_of_tuples.append((ls_st[0], 'adverb'))
                         break
                     if 'verb' in i or 'v' in i:
@@ -59,3 +59,4 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
 
     return cor_use_words2, non_find_words
 # print(check_user_words(['гаяти', 'гнати', 'ініціалізація', 'узяти', 'щавель'], "verb", ['ю', 'щ', 'я', 'ц', 'г'], get_words(r"C:\Users\Predator\Downloads\base.lst", ['ю', 'щ', 'я', 'ц', 'г'])))
+print(get_words(r"C:\Users\Predator\Downloads\base.lst", ['щ']))
