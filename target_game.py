@@ -75,16 +75,15 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     """
     unnown_list = []
     for i in range(len(user_words)):
-        redact_word = user_words[i].lower
         st_word = user_words[i]
-        if redact_word in words_from_dict:
-            if redact_word != user_words[i]:
-                unnown_list.append(user_words[i].lower)
+        if st_word in words_from_dict:
+            if st_word != user_words[i]:
+                unnown_list.append(user_words[i])
         else:
             let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
             lenth = len(user_words[i])
             for j in range(lenth):
-                let_in_word[ord(redact_word[j]) - 97] += 1
+                let_in_word[ord(st_word[j]) - 97] += 1
             let = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
             flag = True
             for i in range(len(letters)):
@@ -95,8 +94,8 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
                         continue
                     else:
                         flag = False
-            if flag == True and letters[4] in st_word.lower:
-                unnown_list.append(st_word.lower)
+            if flag == True and letters[4] in st_word:
+                unnown_list.append(st_word)
         print(unnown_list)
 
 
