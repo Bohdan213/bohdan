@@ -70,15 +70,13 @@ def get_pure_user_words(user_words:List[str],letters:List[str],words_from_dict:L
     that are not in dictionary.
     """
     unnown_list = []
-    ls_ls = []
-    count = 0
     for i in range(len(user_words)):
         st_word = user_words[i]
         if st_word in words_from_dict:
             continue
         else:
             let_in_word = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            lenth = len(user_words[i])
+            lenth = len(st_word)
             for j in range(lenth):
                 let_in_word[ord(st_word[j]) - 97] += 1
             let = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -91,11 +89,9 @@ def get_pure_user_words(user_words:List[str],letters:List[str],words_from_dict:L
                         continue
                     else:
                         flag = False
-            if flag == True and letters[4] in st_word:
+            if flag == True and letters[4] in st_word and len(st_word) >= 4:
                 unnown_list.append(st_word)
-        for i in range(len(unnown_list)):
-            ls_ls.append(unnown_list[i])
-    return ls_ls
+    return unnown_list
 
 
 
