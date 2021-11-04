@@ -109,7 +109,6 @@ def results():
     print(list_words)
     print(user_words)
     get_pure_user_words(user_words, letters_list, list_words)
-    return
 
 
 if __name__ == '__main__':
