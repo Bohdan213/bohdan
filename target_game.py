@@ -12,11 +12,15 @@ def generate_grid() -> List[List[str]]:
     e.g. [['I', 'G', 'E'], ['P', 'I', 'S'], ['W', 'M', 'G']]
     """
     let_list = []
+    for_print = []
     for _ in range(3):
+        temp = []
         for _ in range(3):
             ch_ch = chr(random.randint(97, 122))
             let_list.append(ch_ch)
-    print(let_list)
+            temp.append((ch_ch.upper()))
+        for_print.append((temp))
+    print(for_print)
     return let_list
 
 def get_words(f_url: str, letters: List[str]) -> List[str]:
@@ -62,7 +66,7 @@ def get_user_words() -> List[str]:
     return user_words
 
 
-def get_pure_user_words(user_words:List[str],letters:List[str],words_from_dict:List[str])->List[str]:
+def get_pure_user_words(user_word:List[str],letters:List[str],words_from_dict:List[str])->List[str]:
     """
     (list, list, list) -> list
 
@@ -70,8 +74,8 @@ def get_pure_user_words(user_words:List[str],letters:List[str],words_from_dict:L
     that are not in dictionary.
     """
     unnown_list = []
-    for i in range(len(user_words)):
-        st_word = user_words[i]
+    for i in range(len(user_word)):
+        st_word = user_word[i]
         if st_word in words_from_dict:
             continue
         else:
