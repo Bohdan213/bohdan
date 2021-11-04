@@ -8,7 +8,7 @@ def generate_grid():
     import random
     alp = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
     game_field = []
-    while len(game_field) < 6:
+    while len(game_field) < 5:
         a_ch = alp[random.randint(0, 32)]
         if a_ch not in game_field:
             game_field.append(a_ch)
@@ -33,7 +33,7 @@ def get_words(f, letters):
                     if 'adv' in i:
                         list_of_tuples.append((ls_st[0], 'adverb'))
                         break
-                    if 'verb' in i:
+                    if 'verb' in i or 'v' in i:
                         list_of_tuples.append((ls_st[0], 'verb'))
                         break
     return list_of_tuples
@@ -58,4 +58,4 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
             non_find_words.append(dict_of_words[i][0])
 
     return cor_use_words2, non_find_words
-# print(check_user_words(['абаз', 'абайя'],'noun',['ф','м','у','ы', 'а'],get_words(r'C:\Users\Predator\Downloads\base.lst',['ф','м','у','ы', 'а'])))
+# print(check_user_words(['гаяти', 'гнати', 'ініціалізація', 'узяти', 'щавель'], "verb", ['ю', 'щ', 'я', 'ц', 'г'], get_words(r"C:\Users\Predator\Downloads\base.lst", ['ю', 'щ', 'я', 'ц', 'г'])))
