@@ -95,7 +95,6 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
             if flag == True and letters[4] in st_word.lower():
                 unnown_list.append(st_word.lower())
         print(unnown_list)
-        return
 
 
 def results():
