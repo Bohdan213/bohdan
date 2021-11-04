@@ -12,8 +12,12 @@ def generate_grid() -> List[List[str]]:
     e.g. [['I', 'G', 'E'], ['P', 'I', 'S'], ['W', 'M', 'G']]
     """
     word_list = []
-    for _ in range(9):
-        word_list.append(chr(random.randint(97, 122)))
+    for _ in range(3):
+        temp_ls = []
+        for _ in range(3):
+            temp_ls.append(chr(random.randint(97, 122)))
+        word_list.append((temp_ls))
+        temp_ls = []
     print(word_list)
     return word_list
 
@@ -22,20 +26,21 @@ def get_words(f: str, letters: List[str]) -> List[str]:
     Reads the file f. Checks the words with rules and returns a list of words.
     """
     list_words = []
+    let = [0]
+    let *= 26
+    for i in range(3):
+        for j in range(3):
+            let[ord(letters[i][j]) - 97] += 1
     with open(f, 'r') as file:
         for line in file:
             line = line.strip()
             line = line.lower()
-            if len(line) >= 4 and (line not in list_words) and letters[4] in line:
+            if len(line) >= 4 and (line not in list_words) and letters[1][1] in line:
                 let_in_word = [0]
                 let_in_word *= 26
                 for i in range(len(line)):
-                    if line[i]!='-':
+                    if line[i] != '-':
                         let_in_word[ord(line[i]) - 97] += 1
-                let = [0]
-                let *= 26
-                for i in range(9):
-                    let[ord(letters[i]) - 97] += 1
                 flag_let = True
                 for i in range(26):
                     if let_in_word[i] > 0:
@@ -84,15 +89,16 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
             let = [0]
             let *= 26
             flag = True
-            for i in range(len(letters)):
-                let[ord(letters[i]) - 97] += 1
+            for i in range(3):
+                for j in range(3):
+                    let[ord(letters[i][j]) - 97] += 1
             for i in range(26):
                 if let_in_word[i] > 0:
                     if let[i] >= let_in_word[i]:
                         continue
                     else:
                         flag = False
-            if flag == True and letters[4] in st_word.lower():
+            if flag == True and letters[1][1] in st_word.lower():
                 unnown_list.append(st_word.lower())
         print(unnown_list)
 
