@@ -14,17 +14,17 @@ def generate_grid():
             game_field.append(a_ch)
     return game_field
 
-def get_words(f, letters):
+def get_words(f_a, letters):
     """
     function which make a list from file with words
     """
     list_of_tuples = []
-    with open(f, 'r', encoding='utf-8') as file:
+    with open(f_a, 'r', encoding='utf-8') as file:
         for line in file:
             ls_st = line.split()
             for i in ls_st:
                 if len(ls_st[0]) <= 5 and ls_st[0][0] in letters:
-                    if 'noun' in i or ('n1' in i or 'n2' in i or 'n3' in i or 'n4' in i):
+                    if 'noun' in i or '/n' in i:
                         list_of_tuples.append((ls_st[0], 'noun'))
                         break
                     if 'adj' in i:
@@ -33,7 +33,7 @@ def get_words(f, letters):
                     if 'adv' in i and not 'advp' in i:
                         list_of_tuples.append((ls_st[0], 'adverb'))
                         break
-                    if 'verb' in i or ('v1' in i or 'v2' in i or 'v3' in i or 'v4' in i):
+                    if 'verb' in i or '/v' in i:
                         list_of_tuples.append((ls_st[0], 'verb'))
                         break
     return list_of_tuples
@@ -58,4 +58,4 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
             non_find_words.append(dict_of_words[i][0])
 
     return cor_use_words2, non_find_words
-# print(check_user_words([], "adverb", ['ш', 'ь', 'т', 'і', 'х'],get_words(r"C:\Users\Predator\Downloads\base (1).lst", ['ш', 'ь', 'т', 'і', 'х'])))
+
