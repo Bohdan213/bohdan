@@ -104,7 +104,7 @@ def results():
     """
     Results the game
     """
-    url = "C:\Програмирование\pycharm\en.txt"
+    url = "en.txt"
     letters_list = generate_grid()
     list_words = get_words(url, letters_list)
     user_words = get_user_words()
