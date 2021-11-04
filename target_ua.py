@@ -1,3 +1,6 @@
+"""
+game target
+"""
 
 def generate_grid():
     """
