@@ -1,7 +1,6 @@
 """
 game target
 """
-
 def generate_grid():
     """
     function which generate field with 5 letters
