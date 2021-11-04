@@ -59,6 +59,4 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
             non_find_words.append(dict_of_words[i][0])
 
     return cor_use_words2, non_find_words
-
-
 # print(check_user_words(['абаз', 'абайя'],'noun',['ф','м','у','ы', 'а'],get_words(r'C:\Users\Predator\Downloads\base.lst',['ф','м','у','ы', 'а'])))
