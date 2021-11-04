@@ -59,4 +59,3 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
 
     return cor_use_words2, non_find_words
 # print(check_user_words(['гаяти', 'гнати', 'ініціалізація', 'узяти', 'щавель'], "verb", ['ю', 'щ', 'я', 'ц', 'г'], get_words(r"C:\Users\Predator\Downloads\base.lst", ['ю', 'щ', 'я', 'ц', 'г'])))
-print(get_words(r"C:\Users\Predator\Downloads\base.lst", ['щ']))
