@@ -26,11 +26,7 @@ def get_words(f: str, letters: List[str]) -> List[str]:
     Reads the file f. Checks the words with rules and returns a list of words.
     """
     list_words = []
-    let = [0]
-    let *= 26
-    for i in range(3):
-        for j in range(3):
-            let[ord(letters[i][j]) - 97] += 1
+
     with open(f, 'r') as file:
         for line in file:
             line = line.strip()
@@ -39,8 +35,13 @@ def get_words(f: str, letters: List[str]) -> List[str]:
                 let_in_word = [0]
                 let_in_word *= 26
                 for i in range(len(line)):
-                    if line[i] != '-':
+                    if line[i] != '-' and line[i] != ',':
                         let_in_word[ord(line[i]) - 97] += 1
+                let = [0]
+                let *= 26
+                for i in range(len(letters)):
+                    for j in range(len(letters[i])):
+                        let[ord(letters[i][j]) - 97] += 1
                 flag_let = True
                 for i in range(26):
                     if let_in_word[i] > 0:
