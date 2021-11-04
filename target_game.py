@@ -17,16 +17,19 @@ def generate_grid() -> List[List[str]]:
         temp = []
         for _ in range(3):
             ch_ch = chr(random.randint(97, 122))
-            let_list.append(ch_ch)
             temp.append((ch_ch.upper()))
         for_print.append((temp))
     print(for_print)
-    return let_list
+    return for_print
 
-def get_words(f_url: str, letters: List[str]) -> List[str]:
+def get_words(f_url: str, letter: List[str]) -> List[str]:
     """
     Reads the file f. Checks the words with rules and returns a list of words.
     """
+    letters = []
+    for i in range(3):
+        for j in range(3):
+            letters.append(letter[i][j].lower())
     list_words = []
     let = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     for i in range(len(letters)):
@@ -66,13 +69,17 @@ def get_user_words() -> List[str]:
     return user_words
 
 
-def get_pure_user_words(user_word:List[str],letters:List[str],words_from_dict:List[str])->List[str]:
+def get_pure_user_words(user_word:List[str],letter:List[str],words_from_dict:List[str])->List[str]:
     """
     (list, list, list) -> list
 
     Checks user words with the rules and returns list of those words
     that are not in dictionary.
     """
+    letters = []
+    for i in range(3):
+        for j in range(3):
+            letters.append(letter[i][j].lower())
     unnown_list = []
     for i in range(len(user_word)):
         st_word = user_word[i]
