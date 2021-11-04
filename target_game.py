@@ -14,25 +14,25 @@ def generate_grid() -> List[List[str]]:
     let_list = []
     for _ in range(3):
         for _ in range(3):
-            ch = chr(random.randint(97, 122))
-            let_list.append(ch)
+            ch_ch = chr(random.randint(97, 122))
+            let_list.append(ch_ch)
     print(let_list)
     return let_list
 
-def get_words(f: str, letters: List[str]) -> List[str]:
+def get_words(f_url: str, letters: List[str]) -> List[str]:
     """
     Reads the file f. Checks the words with rules and returns a list of words.
     """
     list_words = []
-    let = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
+    let = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
     for i in range(len(letters)):
         let[ord(letters[i]) - 97] += 1
-    with open(f, 'r') as file:
+    with open(f_url, 'r') as file:
         for line in file:
             line = line.strip()
             line = line.lower()
             if len(line) >= 4 and (line not in list_words) and letters[4] in line:
-                let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
+                let_in_word = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
                 let_in_word *= 26
                 for i in range(len(line)):
                     if line[i] != '-' and line[i] != ',':
@@ -62,7 +62,7 @@ def get_user_words() -> List[str]:
     return user_words
 
 
-def get_pure_user_words(user_words: List[str], letters: List[str], words_from_dict: List[str]) -> List[str]:
+def get_pure_user_words(user_words:List[str],letters:List[str],words_from_dict:List[str])->List[str]:
     """
     (list, list, list) -> list
 
@@ -70,18 +70,18 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
     that are not in dictionary.
     """
     unnown_list = []
-    ls = []
+    ls_ls = []
     count = 0
     for i in range(len(user_words)):
         st_word = user_words[i]
         if st_word in words_from_dict:
             continue
         else:
-            let_in_word = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
+            let_in_word = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             lenth = len(user_words[i])
             for j in range(lenth):
                 let_in_word[ord(st_word[j]) - 97] += 1
-            let = [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0, 0, 0, 0, 0, 0, 0]
+            let = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             flag = True
             for i in range(len(letters)):
                     let[ord(letters[i]) - 97] += 1
@@ -94,8 +94,8 @@ def get_pure_user_words(user_words: List[str], letters: List[str], words_from_di
             if flag == True and letters[4] in st_word:
                 unnown_list.append(st_word)
         for i in range(len(unnown_list)):
-            ls.append(unnown_list[i])
-    return ls
+            ls_ls.append(unnown_list[i])
+    return ls_ls
 
 
 
