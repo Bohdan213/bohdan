@@ -1,5 +1,9 @@
-import random
+
 def generate_grid():
+    """
+    function which generate field with 5 letters
+    """
+    import random
     alp = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя'
     game_field = []
     while len(game_field) < 6:
@@ -9,6 +13,9 @@ def generate_grid():
     return game_field
 
 def get_words(f, letters):
+    """
+    function which make a list from file with words
+    """
     list_of_tuples = []
     with open(f, 'r', encoding='utf-8') as file:
         for line in file:
@@ -30,6 +37,9 @@ def get_words(f, letters):
     return list_of_tuples
 
 def check_user_words(user_words, language_part, letters, dict_of_words):
+    """
+    function which return 2 lists with nown and unnown words
+    """
     cor_use_words1 = []
     for i in range(len(user_words)):
         if user_words[i][0] in letters:
@@ -48,4 +58,4 @@ def check_user_words(user_words, language_part, letters, dict_of_words):
     return cor_use_words2, non_find_words
 
 
-print(check_user_words(['абаз', 'абайя'],'noun',['ф','м','у','ы', 'а'],get_words(r'C:\Users\Predator\Downloads\base.lst',['ф','м','у','ы', 'а'])))
+# print(check_user_words(['абаз', 'абайя'],'noun',['ф','м','у','ы', 'а'],get_words(r'C:\Users\Predator\Downloads\base.lst',['ф','м','у','ы', 'а'])))
