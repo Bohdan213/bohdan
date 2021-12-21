@@ -33,10 +33,12 @@ int main() {
     	q.push(make_pair(0,make_pair(FROM_i, FROM_j)));
     	while(!q.empty())
     	{
+// 		заходимо в цикл і починаємо витягати вершини
         	pair<double, pair<int, int> > front = q.top();
         	int from_i = front.second.first;
         	int from_j = front.second.second;
         	double len = -front.first;
+// 		перевіряємо якщо вийнята вершина є нашою шуканою то ми завершуємо цикл бо коли ми вперше витягаємо вершину з черги в неї вже буде знайдений найкоротший шлях
         	if(from_i == TO_i && from_j == TO_j)  {
 			break;
 		}
