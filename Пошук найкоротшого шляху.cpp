@@ -43,12 +43,15 @@ int main() {
 			break;
 		}
 		q.pop();
+// 		перевірка чи вже є чи була така вершина з ще меншим шляхом у черзі
 		if (len > dist[from_i][from_j])  {
 			continue;
 		}
+// 		опрацьовуємо суміжні вершини, додаємо їх у чергу
         	if((from_i - 1) >= 0)  {
 			int to_i = from_i-1;
 			int to_j = from_j;
+// 			обраховуємо відстань між вершинами
 	        	double cost = pow(pow(abs(arr[from_i - 1][from_j] - arr[from_i][from_j]),2) + pow(step,2),1.0/2);
         		if(dist[to_i][to_j] > len + cost) {
         	    		dist[to_i][to_j] = len + cost;
@@ -90,6 +93,7 @@ int main() {
         		}
 		}
     	}
+// 	відновлення шляху
 	int TO = TO_i * n + TO_j;
     	vector<int> put(1, TO);
     	int FROM = FROM_i * n + FROM_j;
@@ -98,6 +102,7 @@ int main() {
 	    	TO = p[TO];
 	   	put.push_back(TO);
 	}
+// 	виведення результату в окремий файл
 	freopen("answ.txt", "w", stdout);
 	printf("%.9lf\n", dist[TO_i][TO_j]);
     	for(int i = put.size()-1; i >= 0; --i) {
